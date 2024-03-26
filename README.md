@@ -1,4 +1,4 @@
-# Flask Blog
+# Blog
 
 This is a simple Flask blog application.
 
