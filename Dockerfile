@@ -11,6 +11,10 @@ WORKDIR /app
 # Copy the dependencies file to the working directory
 COPY requirements.txt /app/
 
+
+#upgrade pip
+RUN pip install --upgrade pip
+
 # Install any dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 

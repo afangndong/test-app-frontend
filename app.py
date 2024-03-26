@@ -8,8 +8,8 @@ users = {}
 messages = []
 
 @app.route('/')
-def home():
-    return render_template('templates/home.html', messages=messages)
+def index():
+    return render_template('index.html', messages=messages)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -18,7 +18,7 @@ def signup():
         password = request.form['password']
         users[username] = password
         return redirect(url_for('login'))
-    return render_template('templates/signup.html')
+    return render_template('signup.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -27,7 +27,7 @@ def login():
         password = request.form['password']
         if username in users and users[username] == password:
             return redirect(url_for('publish'))
-    return render_template('templates/login.html')
+    return render_template('login.html')
 
 @app.route('/publish', methods=['GET', 'POST'])
 def publish():
@@ -35,12 +35,12 @@ def publish():
         message = request.form['message']
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         messages.append({'message': message, 'timestamp': timestamp})
-        return redirect(url_for('home'))
-    return render_template('templates/publish.html')
+        return redirect(url_for('index'))
+    return render_template('publish.html')
 
 @app.route('/about')
 def about():
-    return render_template('templates/about.html')
+    return render_template('about.html')
 
 
 if __name__ == '__main__':
